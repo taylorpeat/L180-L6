@@ -12,3 +12,5 @@ WHERE id = ANY (SELECT DISTINCT item_id FROM bids WHERE amount < 100);
 
 SELECT name AS "Highest Bid Less Than 100 Dollars" FROM items
 WHERE 100 > ALL (SELECT amount FROM bids WHERE item_id = items.id);
+
+SELECT max(SELECT COUNT(*) FROM bids GROUP BY bidder_id);
